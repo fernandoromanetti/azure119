@@ -1,43 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedra, Papel, Tesoura</title>
     <style>
         body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-        
-        h1 {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
             color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        
-        #choices {
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
             margin-top: 20px;
         }
-        
+
         button {
-            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s;
+            flex: 1;
+            margin: 0 5px;
         }
-        
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #388e3c;
+        }
+
         #result {
             margin-top: 20px;
             font-size: 18px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Rock, Paper, Scissors</h1>
-    <p>Select your choice:</p>
-    <div id="choices">
-        <button onclick="playGame('rock')">Rock</button>
-        <button onclick="playGame('paper')">Paper</button>
-        <button onclick="playGame('scissors')">Scissors</button>
+    <div class="container">
+        <h1>Pedra, Papel e Tesoura</h1>
+        <p>Escolha sua jogada:</p>
+        <div class="buttons">
+            <button onclick="playGame('rock')">Pedra</button>
+            <button onclick="playGame('paper')">Papel</button>
+            <button onclick="playGame('scissors')">Tesoura</button>
+        </div>
+        <p id="result"></p>
     </div>
-    <p id="result"></p>
 
     <script>
         function playGame(userChoice) {
@@ -47,15 +103,15 @@
             var result = document.getElementById("result");
             
             if (userChoice === computerChoice) {
-                result.textContent = "It's a tie!";
+                result.textContent = "Empate!";
             } else if (
                 (userChoice === 'rock' && computerChoice === 'scissors') ||
                 (userChoice === 'paper' && computerChoice === 'rock') ||
                 (userChoice === 'scissors' && computerChoice === 'paper')
             ) {
-                result.textContent = "You win!";
+                result.textContent = "Você ganhou!";
             } else {
-                result.textContent = "Computer wins!";
+                result.textContent = "O computador ganhou!";
             }
         }
     </script>
